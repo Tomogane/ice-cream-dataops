@@ -5,22 +5,20 @@ workflowDefinition:
 
     # 1. create_asset_hierarchy
     - externalId: create_asset_hierarchy_task
-      type: function
+      type: transformation
       parameters:
-        function:
+        transformation:
           externalId: create_asset_hierarchy
-          data: {}
       retries: 3
       timeout: 3600
       onFailure: abortWorkflow
 
     # 2. contextualize_ts_assets（→ create_asset_hierarchy の後に実行）
     - externalId: contextualize_ts_assets_task
-      type: function
+      type: transformation
       parameters:
-        function:
+        transformation:
           externalId: contextualize_ts_assets
-          data: {}
       retries: 3
       timeout: 3600
       onFailure: abortWorkflow
